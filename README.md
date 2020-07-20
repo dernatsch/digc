@@ -7,17 +7,17 @@ The rate at which loggers produce B records is variable and may be subject to us
 Assuming this rate of 1 record per second a long flight of 10 hours produces 36000 B records or ~1.2 MiB of data.
 Although an extreme example I wanted to explore how much delta encoding reduces the size of such a file.
 
-## The Goal
+## The Goal / Usage
 The end product should be a way to perform a lossless encoding of IGC files.
 In other words a program that produces some kind of file by
 ```sh
-    cat test.igc | digc.py > smaller.digc
+digc.py test.igc > test.digc
 ```
 such that when reversed by
 ```sh
-    cat smaller.digc | digc.py -d > bigger.igc
+digc.py -d test.digc > out.igc
 ```
-the files `test.igc` and `bigger.igc` are identical.
+the files `test.igc` and `out.igc` are identical.
 
 **I haven't implemented the decode functionality yet, oh well.**
 
